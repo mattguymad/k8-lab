@@ -23,4 +23,4 @@ spec:
     hostPath:
       path: /tmp/files
   nodeSelector:
-    env: dev
+    env: prod
