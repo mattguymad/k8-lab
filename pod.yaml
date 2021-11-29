@@ -22,4 +22,5 @@ spec:
   - name: app-storage
     hostPath:
       path: /tmp/files
-
+  nodeSelector:
+    env: qa
