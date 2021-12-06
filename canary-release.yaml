@@ -45,7 +45,7 @@ spec:
 kind: Service      # Create new service
 apiVersion: v1     
 metadata:
-  name: spring-music-service # Name of the service
+  name: animal-service # Name of the service
 spec:
   selector:
     app: animal
