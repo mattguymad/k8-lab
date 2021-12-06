@@ -48,7 +48,8 @@ metadata:
   name: animal-service # Name of the service
 spec:
   selector:
-    app: animal
+    matchLabels:
+      app: animal
   ports:          # Map incoming port to target port
   - name: http    # Setting multiple ports listterns 
     protocol: TCP
