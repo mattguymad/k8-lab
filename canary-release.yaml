@@ -53,5 +53,5 @@ spec:
   - name: http    # Setting multiple ports listterns 
     protocol: TCP
     port: 80
-    targetPort: 8080
+    targetPort: 80
   type: LoadBalancer
