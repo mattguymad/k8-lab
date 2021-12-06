@@ -13,5 +13,7 @@ spec:
             image: alpine:latest
             imagePullPolicy: IfNotPresent
             command:
-            - echo Hello Matthew
+            - /bin/sh
+            - -c
+            - date; echo Hello Matthew
           restartPolicy: OnFailure
