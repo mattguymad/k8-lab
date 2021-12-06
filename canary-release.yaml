@@ -48,8 +48,7 @@ metadata:
   name: spring-music-service # Name of the service
 spec:
   selector:
-    matchLabels:
-      app: animal
+    app: animal
   ports:          # Map incoming port to target port
   - name: http    # Setting multiple ports listterns 
     protocol: TCP
