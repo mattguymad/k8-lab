@@ -15,8 +15,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  # change the IP below based on the DNS resolution of your LB (under kubectl get svc -n ingress-nginx)
-  - host: 100.65.8.162.nip.io 
+  # change the IP below based on the DNS resolution of your LB (under kubectl get svc -n ingress-nginx) NOT CLUSTERIP
+  - host: 34.240.197.132.nip.io 
     http:
       paths:
       - path: /bear(/|$)(.*)
