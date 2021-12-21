@@ -1,24 +1,41 @@
+#to test it use:
+#### for i in {1..30}; do curl -s LBDNS | grep bear; done;
+#### for i in {1..30}; do curl -s LBDNS | grep moose; done;
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress-canary
   annotations:
     nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-by-cookie: "user_from_cd"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2 # We strip the prefix before it passes to our backend or our app wont load as it will get route /bears instead /
-
+    nginx.ingress.kubernetes.io/canary-weight: "10"
 
 spec:
   ingressClassName: nginx
   rules:
-  # change the IP below based on the DNS resolution of your LB (under kubectl get svc -n ingress-nginx) NOT CLUSTERIP
-  - host: 34.240.197.132.nip.io 
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: bear-svc
-            port:
-              number: 80
+    - http:
+       paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: bear-svc
+              port:
+                 number: 80
+                 
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-canary-v1
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+       paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: moose-svc
+              port:
+                 number: 80
